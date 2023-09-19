@@ -1,7 +1,8 @@
 import axios from "axios";
-import {useQuery} from "@tanstack/react-query";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 
 const Index = () => {
+    const query = useQueryClient();
     const getAllTodo = async ()=>{
         const res = await axios.get("https://jsonplaceholder.typicode.com/todos")
         return res.data;
@@ -13,6 +14,21 @@ const Index = () => {
         isSuccess
     } = useQuery({ queryKey: ['get','todos'], queryFn: getAllTodo })
     console.log(isLoading,isError,isSuccess)
+    const createTodo =async () => {
+            const res = await axios.get("https://jsonplaceholder.typicode.com/todos")
+            return res.data;
+    }
+    const {mutate} = useMutation({
+        mutationKey:['post',"todos"],
+        mutationFn:createTodo
+    })
+    // mutate({},{
+    //     onSuccess:async ()=>{
+    //         await query.invalidateQueries({
+    //             queryKey:["get","todos"]
+    //         })
+    //     }
+    // })
     return (
         <div>
           Hello World
