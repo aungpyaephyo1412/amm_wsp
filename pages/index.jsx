@@ -1,5 +1,6 @@
 import axios from "axios";
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
+import Link from "next/link";
 
 const Index = () => {
     const query = useQueryClient();
@@ -34,8 +35,11 @@ const Index = () => {
           Hello World
             <div>
                 {
+                    isLoading && <div>Loading......</div>
+                }
+                {
                     isSuccess && todos.map(todo=>{
-                        return <li key={todo.id}>{todo.id} - {todo.title}</li>
+                        return <Link className='block' href={`/${todo.id}`} key={todo.id}>{todo.id} - {todo.title}</Link>
                     })
                 }
             </div>
