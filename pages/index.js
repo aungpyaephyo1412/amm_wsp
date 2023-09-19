@@ -2,9 +2,6 @@ const Index = () => {
     return (
         <div>
           Hello World
-            <div>
-                    About
-            </div>
         </div>
     );
 };
