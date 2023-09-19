@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {useUserName} from "@/context/userNameContext";
 const Index = () => {
     const name = useUserName();
@@ -7,9 +6,7 @@ const Index = () => {
         <div>
           Hello World
             <div>
-                <Link href="/about">
                     About
-                </Link>
             </div>
         </div>
     );
